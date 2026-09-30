@@ -1,6 +1,6 @@
 import { loadPair, list, insert, update, remove } from '../supa.js';
 import { esc, $, $$, iconBtn, openModal, field, readForm, confirmBox, guard, md, fmtDate } from '../ui.js';
-import { tabs, subHeader } from './_shared.js';
+import { tabs, subHeader } from './shared.js';
 
 const KINDS = ['본편', 'AU', 'IF'];
 

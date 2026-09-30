@@ -1,6 +1,6 @@
 import { loadPair, latest, remove, removeFile } from '../supa.js';
 import { esc, $, hydrate, imgTag, dday, confirmBox, guard, has } from '../ui.js';
-import { tabs } from './_shared.js';
+import { tabs } from './shared.js';
 import { NICK } from './pairform.js';
 
 export default async function pairView(el, pid) {

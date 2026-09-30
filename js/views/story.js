@@ -1,6 +1,6 @@
 import { loadPair, list, insert, update, remove } from '../supa.js';
 import { esc, $, $$, iconBtn, openModal, field, readForm, confirmBox, guard, md } from '../ui.js';
-import { tabs, subHeader } from './_shared.js';
+import { tabs, subHeader } from './shared.js';
 
 export default async function story(el, pid) {
   const ctx = await loadPair(pid);

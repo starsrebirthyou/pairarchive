@@ -1,6 +1,6 @@
 import { loadPair, list, insert, update, remove, ai } from '../supa.js';
 import { esc, $, $$, iconBtn, openModal, field, readForm, confirmBox, guard, toast } from '../ui.js';
-import { tabs, subHeader, aiContext } from './_shared.js';
+import { tabs, subHeader, aiContext } from './shared.js';
 
 export default async function au(el, pid) {
   const ctx = await loadPair(pid);

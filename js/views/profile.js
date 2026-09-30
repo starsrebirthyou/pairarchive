@@ -1,6 +1,6 @@
 import { loadPair } from '../supa.js';
 import { esc, $, $$, hydrate, imgTag, ink } from '../ui.js';
-import { tabs, pairName } from './_shared.js';
+import { tabs, pairName } from './shared.js';
 
 export const PTABS = [['basic', '기본'], ['look', '외관 · 성격'], ['voice', '말투 · 습관'], ['taste', '취향'], ['past', '과거 · 관계'], ['outfit', '의상']];
 export const LOOK = [['first', '첫인상'], ['hair', '머리카락'], ['eyes', '눈'], ['body', '체형'], ['wear', '복장 · 소지품']];

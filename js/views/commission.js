@@ -1,6 +1,6 @@
 import { loadPair, list, insert, update, remove, removeFile, imgUrl } from '../supa.js';
 import { esc, $, $$, iconBtn, openModal, field, readForm, confirmBox, guard, hydrate, imgTag, makeDropzone, uploadMany, today, toast, ICON } from '../ui.js';
-import { tabs, subHeader } from './_shared.js';
+import { tabs, subHeader } from './shared.js';
 
 const TILTS = ['-1.5deg', '1deg', '-.5deg', '1.5deg', '.8deg', '-1.2deg', '1.3deg', '-.7deg'];
 
