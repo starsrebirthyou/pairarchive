@@ -29,8 +29,26 @@ export default async function profile(el, pid, which, cached) {
   const body = {
     basic: `
       <div class="grid2">
-        <div class="card"><h3>짧은 설명</h3><div class="pre">${dash(p.intro)}</div></div>
-        <div class="card"><h3>대표 대사</h3><div class="hand pre" style="font-size:24px;color:#6b3a45">${p.line ? '“' + esc(p.line) + '”' : '<span class="muted">—</span>'}</div></div>
+        <div class="card"><h3>프로필</h3>
+          <div style="display:grid;grid-template-columns:90px minmax(0,1fr);font-size:14px">
+            ${[['이름', c.name], ['이명', p.alias], ['구분', p.kind], ['나이', p.age], ['생일', p.birthday], ['키', p.height], ['MBTI', p.mbti], ['테마곡', p.song], ['상징물', p.symbol]]
+              .map(([l, v]) => `<div class="muted" style="padding:8px 0;border-top:1.5px dashed var(--line)">${l}</div><div style="padding:8px 0;border-top:1.5px dashed var(--line)">${dash(v)}</div>`).join('')}
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:22px">
+          <div class="card" style="flex-direction:row;align-items:center;gap:18px">
+            <div style="width:84px;height:84px;border-radius:14px;background:${col};border:1px solid #c9b3a3;flex-shrink:0"></div>
+            <div><h3>상징색</h3><div style="font-size:18px;letter-spacing:1px">${esc(col)}</div></div>
+          </div>
+          <div class="card"><h3>키워드</h3>
+            <div class="row" style="gap:6px">${(p.tags || '').split(',').map((t) => t.trim()).filter(Boolean).map((t) => `<span class="badge" style="background:${col};color:${ink(col)}">#${esc(t)}</span>`).join('') || '<span class="muted">프로필 수정 → 기본에서 추가할 수 있어요</span>'}</div>
+          </div>
+        </div>
+      </div>
+      <div class="card"><h3>TMI</h3>
+        ${(p.tmi || '').split('\n').map((t) => t.trim()).filter(Boolean).length
+          ? `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px">${(p.tmi || '').split('\n').map((t) => t.trim()).filter(Boolean).map((t, i) => `<div class="note ${i % 2 ? 'blue' : 'yellow'}" style="padding:14px 16px;font-size:14px;line-height:1.7;box-shadow:var(--shadow)">${esc(t)}</div>`).join('')}</div>`
+          : '<div class="muted">한 줄에 하나씩 적으면 포스트잇처럼 모여요</div>'}
       </div>`,
     look: `
       <div class="grid2">
