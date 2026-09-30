@@ -1,6 +1,8 @@
 import { sb } from './supa.js';
 import { esc, toast, $ } from './ui.js';
-import { SUPABASE_URL } from './config.js';
+import { SUPABASE_URL, SITE_NAME } from './config.js';
+
+document.title = SITE_NAME;
 import home from './views/home.js';
 import pairForm from './views/pairform.js';
 import pairView from './views/pair.js';
@@ -53,7 +55,7 @@ async function route() {
 function renderLogin() {
   app.innerHTML = `
     <form class="card login" id="login">
-      <h1 class="title" style="text-align:center">페어 아카이브</h1>
+      <h1 class="title" style="text-align:center">${esc(SITE_NAME)}</h1>
       <p class="muted" style="text-align:center;margin:0">나만 보는 공간이에요. 로그인해주세요.</p>
       <div class="field"><label for="em">이메일</label><input id="em" type="email" name="email" autocomplete="email" required></div>
       <div class="field"><label for="pw">비밀번호</label><input id="pw" type="password" name="pw" autocomplete="current-password" required></div>
@@ -72,7 +74,13 @@ sb.auth.onAuthStateChange((_e, s) => {
   session = s;
   if (changed) route();
 });
-const { data } = await sb.auth.getSession();
-session = data.session;
 window.addEventListener('hashchange', route);
+try {
+  const { data, error } = await sb.auth.getSession();
+  if (error) throw error;
+  session = data.session;
+} catch (e) {
+  console.error(e);
+  session = null;
+}
 route();
