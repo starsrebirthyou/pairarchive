@@ -64,6 +64,8 @@ export default async function profileEdit(el, pid, which) {
       </div>
       <div class="grid4">${field('나이', 'p.age', p.age)}${field('생일', 'p.birthday', p.birthday)}${field('키', 'p.height', p.height)}${field('MBTI', 'p.mbti', p.mbti)}</div>
       <div class="grid2">${field('테마곡', 'p.song', p.song, { ph: '곡명 — 아티스트' })}${field('상징물', 'p.symbol', p.symbol)}</div>
+      ${field('키워드 태그 (쉼표로 구분)', 'p.tags', p.tags, { ph: '무뚝뚝, 고양이상, 집착' })}
+      ${field('TMI (한 줄에 하나씩)', 'p.tmi', p.tmi, { area: true, rows: 6, ph: '단 걸 못 먹는다\n잘 때 이불을 머리끝까지 덮는다' })}
       <div class="row" style="align-items:flex-end">
         <div class="field"><label for="hex">상징색 (hex)</label><input id="hex" type="text" name="color" value="${esc(c.color)}" style="width:140px"></div>
         <span class="dot" id="swatch" style="width:44px;height:44px;border-radius:22px;background:${esc(c.color)}"></span>
